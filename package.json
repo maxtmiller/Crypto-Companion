@@ -1,13 +1,48 @@
 {
+  "name": "geesehacks",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@google/generative-ai": "^0.21.0",
-    "axios": "^1.7.9",
-    "cohere-ai": "^7.15.4",
-    "dotenv": "^16.4.7",
-    "ejs": "^3.1.10",
-    "express": "^4.21.2",
-    "express-openid-connect": "^2.17.1",
-    "mongodb": "^6.12.0",
-    "multer": "^1.4.5-lts.1"
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
+    "cra-template": "1.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-scripts": "^5.0.1",
+    "react-tweet": "^3.2.1",
+    "recharts": "^2.15.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.9.3",
+    "web-vitals": "^4.2.4"
   }
 }
