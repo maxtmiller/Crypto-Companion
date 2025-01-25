@@ -298,11 +298,6 @@ textarea {
     height: 80px;
 }
 
-button {
-    padding: 10px 15px;
-    margin-top: 10px;
-}
-
 .popup-content button[type="submit"] {
     background-color: #4CAF50;
     color: white;

@@ -1,14 +1,17 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const multer = require('multer');
+const bodyParser = require('body-parser');
 const fs = require('fs');
+const axios = require('axios');
 const { MongoClient, ServerApiVersion, GridFSBucket, ObjectId } = require("mongodb");
 const { auth } = require("express-openid-connect");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const { CohereClientV2 } = require('cohere-ai');
+// const cohere = require('cohere-ai');
 
 const app = express();
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.set('view engine', 'ejs');
@@ -21,6 +24,13 @@ const client = new MongoClient(process.env.MONGODB_URI, {
         strict: true,
         deprecationErrors: true,
     }
+});
+
+
+// Load API key from environment variables
+const apiKey = process.env.COHERE_API_KEY;
+const cohere = new CohereClientV2({
+    token: apiKey,
 });
 
 
@@ -40,7 +50,7 @@ async function connectToDatabase() {
 app.use(express.static(path.join(__dirname, 'public')));
 
 const config = {
-    authRequired: true,
+    authRequired: false,
     auth0Logout: true,
     baseURL: process.env.AUTH0_BASE_URL,
     clientID: process.env.AUTH0_CLIENT_ID,
@@ -61,6 +71,42 @@ app.get('/', (req, res) => {
     }
 });
 
+app.post('/cohere-chat', async (req, res) => {
+    try {
+
+        const { userMessage } = req.body;
+        if (!userMessage) {
+            return res.status(400).json({ error: 'Message is required' });
+        }
+
+        // Define the system message context
+        const systemMessage = `## Task and Context
+        You are a specialist in all things finance, especially crypto and stocks.
+
+        ## Style Guide
+        Respond in short, clear, and concise sentences. Provide only the necessary information and avoid over-explaining. Dont reponse in markdown.`;
+
+        // Construct the list of messages
+        const messages = [
+            { role: "system", content: systemMessage },
+            { role: "user", content: userMessage },
+        ];
+
+        // Call Cohere's API
+        const response = await cohere.chat({
+            model: "command-r-plus-08-2024",
+            messages: messages,
+        });
+
+        const responseMessage = response.message.content[0].text;
+
+        // // Return the assistant's message as a JSON response
+        res.json({ responseMessage });
+    } catch (error) {
+        console.error(`112: Error occurred: ${error.message}`);
+        res.status(500).json({ error: "An error occurred while processing your message." });
+    }
+});
 
 
 const PORT = process.env.PORT || 3000;

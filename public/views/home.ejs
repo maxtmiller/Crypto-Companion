@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto : Main Page </title>
     <link rel="stylesheet" href="../styling/styles.css">
+    <link rel="stylesheet" href="../styling/chatbot.css">
     <link href="../logo.jpg" rel="icon" type="image/jpg" style="border-radius: 50%;">
 </head>
 <body>
@@ -26,14 +27,26 @@
         </header>
         <main class="dashboard-content">
             
+            <button id="chat-toggle-btn" onclick="toggleChat()">💬</button>
+            <div id="chat-container" class="chat-container">
+                <button id="close-chat-btn" onclick="toggleChat()">❌</button>
+                <div class="chat-box" id="chat-box">
+                    <!-- Chat history populated here -->
+                </div>
+
+                <div class="input-container">
+                    <input type="text" id="user-input" placeholder="Type your message..." autofocus>
+                    <button id="send-btn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+            <script src="../chatbot.js" ></script>
         </main>
-        <footer class="dashboard-footer">
+        <!-- <footer class="dashboard-footer">
             <p>&copy; 2025 Crypto. All rights reserved.</p>
-        </footer>
+        </footer> -->
     </div>
     <script>
-        const userName = '<%= userName %>';
-        document.getElementById('welcome-message').innerText = `Welcome, ${userName}!`;
+        
     </script>
 </body>
 </html>
