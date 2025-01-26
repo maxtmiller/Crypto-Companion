@@ -156,7 +156,7 @@ router.post('/:userid/history/update', async (req, res) => {
                     }
                 });
             } else {
-                console.error("Failed to fetch prices from CoinGecko:", response.statusText);
+                return res.status(400).json({ message: `Failed to fetch prices from CoinGecko: {response.statusText}` });
             }
         }
 
@@ -173,7 +173,6 @@ router.post('/:userid/history/update', async (req, res) => {
             history: user.history
         });
     } catch (error) {
-        console.error("Error updating history:", error.message);
         res.status(500).json({ message: error.message });
     }
 });
