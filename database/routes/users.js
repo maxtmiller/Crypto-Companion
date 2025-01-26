@@ -128,7 +128,7 @@ router.post('/:userid/history/update', async (req, res) => {
 
         if (cryptoIds) {
             // Fetch current prices from CoinGecko
-            const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${cryptoIds}`;
+            const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&ids=${cryptoIds}`;
             const options = {
                 method: 'GET',
                 headers: {
