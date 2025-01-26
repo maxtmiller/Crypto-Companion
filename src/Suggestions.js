@@ -57,7 +57,6 @@ function Suggestions() {
     ETH: true,
     XRP: true,
     SOL: true,
-    USDT: true,
   });
 
   const handleDecline = (coin) => {
@@ -178,29 +177,6 @@ function Suggestions() {
               </button>
               <button
                 id="a-s4-b"
-                className="accept-button"
-                onClick={() => handleAccept("SOL")}
-              >
-                Accept
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* SOL Suggestion */}
-        {visibleSuggestions.SOL && (
-          <div className="suggestion-card">
-            <h2>USDT: +$20</h2>
-            <div className="button-group">
-              <button
-                id="d-s5-b"
-                className="decline-button"
-                onClick={() => handleDecline("SOL")}
-              >
-                Decline
-              </button>
-              <button
-                id="a-s5-b"
                 className="accept-button"
                 onClick={() => handleAccept("SOL")}
               >

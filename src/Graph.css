@@ -1,9 +1,9 @@
 .graph-container {
-    position: absolute; /* Allows precise positioning */
-    top: 150px; /* Move it lower */
-    left: 1050px; /* Move it more towards the right */
-    width: 700px; /* Adjust width so it's not squished */
-    height: 400px; /* Adjust height */
+    position: absolute;
+    top: 150px;
+    left: 1050px;
+    width: 700px;
+    height: 400px;
   }
   
   .text-heading {

@@ -2,8 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const bodyParser = require('body-parser');
-const fs = require('fs');
-const axios = require('axios');
 const cors = require('cors');
 const { auth } = require("express-openid-connect");
 const { CohereClientV2 } = require('cohere-ai');
@@ -17,7 +15,6 @@ app.set('views', path.join(__dirname, 'public', 'views'));
 app.use(cors());
 
 
-// Load API key from environment variables
 const apiKey = process.env.COHERE_API_KEY;
 const cohere = new CohereClientV2({
     token: apiKey,
@@ -41,8 +38,6 @@ app.get('/', (req, res) => {
         const userSub = req.oidc.user.sub;
         const userID = userSub.split('|')[1];
         const userName = req.oidc.user.nickname;
-        console.log('User ID:', userID);
-        console.log('User Name:', userName);
 
         res.redirect('http://localhost:3001/?name=' + userName + '|' + userID);
 
@@ -60,7 +55,6 @@ app.post('/cohere-chat', async (req, res) => {
             return res.status(400).json({ error: 'Message is required' });
         }
 
-        // Define the system message context
         const systemMessage = `## Task and Context
         You are a specialist in all things finance, especially crypto and stocks.
 
@@ -68,13 +62,11 @@ app.post('/cohere-chat', async (req, res) => {
         Respond in short, clear, and concise sentences. Provide only the necessary information and avoid over-explaining. Dont reponse in markdown.
         Don't argue with the user. If the user is wrong, provide the correct information in a polite manner.`;
 
-        // Construct the list of messages
         const messages = [
             { role: "system", content: systemMessage },
             { role: "user", content: userMessage },
         ];
 
-        // Call Cohere's API
         const response = await cohere.chat({
             model: "command-r-plus-08-2024",
             messages: messages,
@@ -82,7 +74,6 @@ app.post('/cohere-chat', async (req, res) => {
 
         const responseMessage = response.message.content[0].text;
 
-        // // Return the assistant's message as a JSON response
         res.json({ responseMessage });
     } catch (error) {
         console.error(`112: Error occurred: ${error.message}`);
@@ -98,7 +89,6 @@ app.post('/cohere-suggestion', async (req, res) => {
             return res.status(400).json({ error: 'Message is required' });
         }
 
-        // Define the system message context
         const systemMessage = `## Task and Context
         You are a specialist in all things finance, especially crypto and stocks.
 
@@ -110,13 +100,11 @@ app.post('/cohere-suggestion', async (req, res) => {
         Use markdown to format your response and each action on a different line.
         Don't include a title in your response.`;
 
-        // Construct the list of messages
         const messages = [
             { role: "system", content: systemMessage },
             { role: "user", content: userMessage },
         ];
 
-        // Call Cohere's API
         const response = await cohere.chat({
             model: "command-r-plus-08-2024",
             messages: messages,
@@ -124,7 +112,6 @@ app.post('/cohere-suggestion', async (req, res) => {
 
         const responseMessage = response.message.content[0].text;
 
-        // // Return the assistant's message as a JSON response
         res.json({ responseMessage });
     } catch (error) {
         console.error(`112: Error occurred: ${error.message}`);

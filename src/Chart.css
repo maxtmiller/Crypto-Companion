@@ -1,33 +1,7 @@
-
-/*
-.chart-box {
-  position: fixed;
-  margin-top: 20px;
-  margin-left: 100px;
-  width: 440px;
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  border: 2px solid #ddd; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  z-index: 1000;
-}
-*/
-
-
-
-/*
-.chart-box {
-  position: relative;  // Ensures positioning is relative to this container 
-  width: 100vw;        // Full screen width 
-  height: 100vh;       //  Full screen height 
-}
-*/
 .pie-container {
-  position: absolute;  /* Enables precise placement */
-  top: 150px;          /* Move down (increase for further down) */
-  left: 650px;         /* Move right (increase for further right) */
+  position: absolute;
+  top: 150px;
+  left: 650px;
 }
 
 .pie-container h1 {

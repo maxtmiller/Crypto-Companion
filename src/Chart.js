@@ -6,7 +6,7 @@ import './Chart.css';
 const Chart = () => {
   const [data, setData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const userId = '12345'; // TODO: dynamically fetch the actual userId
+  const userId = '12345';
 
   const COLORS = ['#858c96', '#92b1f4', '#3c4758', '#B8CDE8'];
 
@@ -15,7 +15,6 @@ const Chart = () => {
       const response = await fetch(`https://geesehacks.onrender.com/user/${userId}/portfolio`);
       const result = await response.json();
 
-      // Transform the API response to the required format
       const transformedData = result.portfolio.map(([name, percent]) => ({
         name,
         percent: parseFloat(percent),
@@ -46,10 +45,10 @@ const Chart = () => {
             activeIndex={activeIndex}
             data={data}
             dataKey="percent"
-            innerRadius={90}  // Adjust inner radius to create spacing
-            paddingAngle={5}  // Add spacing between slices
-            stroke="white"    // Add border around slices
-            strokeWidth={2}   // Adjust border thickness
+            innerRadius={90}
+            paddingAngle={5}
+            stroke="white"
+            strokeWidth={2}
             outerRadius={175}
             fill="green"
             onMouseEnter={onPieEnter}

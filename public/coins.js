@@ -1,17 +1,41 @@
-
-// const url = "https://api.coingecko.com/api/v3/coins/list";
-
 const btcPrice = document.getElementById("btc-price");
 const ethPrice = document.getElementById("eth-price");
 const solPrice = document.getElementById("sol-price");
 
-function getCoinPrice(name, element) {
+
+function getAPIKey() {
+    const jsonFilePath = './config.json'; 
+
+    let apikey;
+
+    fetch(jsonFilePath)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        return response.json();
+    })
+    .then(data => {
+        apikey = data.gecko_api;
+        
+        getCoinPrice("bitcoin", btcPrice, apikey);
+        getCoinPrice("ethereum", ethPrice, apikey);
+        getCoinPrice("solana", solPrice, apikey);
+    })
+    .catch(error => {
+        console.error('Error fetching or parsing JSON:', error);
+    });
+}
+
+
+function getCoinPrice(name, element, apiKey) {
     const id = name;
     const url = `https://api.coingecko.com/api/v3/coins/${id}`;
     fetch(url, {
         method: "GET",
         headers: {
-            "x-cg-demo-api-key": "CG-ypBTknPKECypM2SuYkNDT3bk", // Replace with your actual API key if needed
+            "x-cg-demo-api-key": apiKey,
         },
     })
     .then((response) => {
@@ -21,19 +45,14 @@ function getCoinPrice(name, element) {
         return response.json();
     })
     .then((data) => {
-        // Extract the USD price from the response
         const price = data.market_data.current_price.usd;
 
-        // Update the innerHTML of the corresponding element with the coin price
-        element.innerHTML = `$${price.toFixed(2)}`; // Format to 2 decimal places
+        element.innerHTML = `$${price.toFixed(2)}`;
     })
     .catch((error) => {
         console.error("Error fetching data:", error);
-        element.innerHTML = "Error loading price"; // Fallback message
+        element.innerHTML = "Error loading price";
     });
 }
 
-// Call the function for each coin, passing the correct element
-getCoinPrice("bitcoin", btcPrice);
-getCoinPrice("ethereum", ethPrice);
-getCoinPrice("solana", solPrice);
+getAPIKey();
