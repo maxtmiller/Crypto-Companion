@@ -94,8 +94,8 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 350px;
-    height: 700px;
+    width: 20vw;
+    height: 84vh;
     background-color: #f1f1f1;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -108,15 +108,6 @@
     transition: transform 0.3s ease;
   }
   
-  /* Chat box to hold messages */
-  .chat-box {
-    height: 300px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 5px;
-  }
   
   /* Input container style */
   .input-container {
@@ -146,7 +137,6 @@
   }
 
   
-  /* Close button at the top-left */
   #close-chat-btn {
     position: absolute;
     top: 10px;

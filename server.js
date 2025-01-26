@@ -4,6 +4,7 @@ const path = require("path");
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const axios = require('axios');
+const cors = require('cors');
 const { MongoClient, ServerApiVersion, GridFSBucket, ObjectId } = require("mongodb");
 const { auth } = require("express-openid-connect");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'public', 'views'));
 
+app.use(cors());
 
 const client = new MongoClient(process.env.MONGODB_URI, {
     serverApi: {
@@ -84,7 +86,8 @@ app.post('/cohere-chat', async (req, res) => {
         You are a specialist in all things finance, especially crypto and stocks.
 
         ## Style Guide
-        Respond in short, clear, and concise sentences. Provide only the necessary information and avoid over-explaining. Dont reponse in markdown.`;
+        Respond in short, clear, and concise sentences. Provide only the necessary information and avoid over-explaining. Dont reponse in markdown.
+        Don't argue with the user. If the user is wrong, provide the correct information in a polite manner.`;
 
         // Construct the list of messages
         const messages = [
