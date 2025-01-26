@@ -42,4 +42,4 @@ CryptoCompanion bridges this gap by offering a beginner-friendly platform that e
 - Mobile App: Launch a mobile version for accessibility on the go.
 - Partnerships: Collaborate with educational institutions to offer crypto literacy programs.
 
-## [`API Deployment`](https://geesehacks.onrender.com)
+## [`Portfolio API Deployment`](https://geesehacks.onrender.com)
