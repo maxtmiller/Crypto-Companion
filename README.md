@@ -1,5 +1,5 @@
 
-# CrptoCompanion
+# CryptoCompanion
 
 ## Inspiration
 As the Canadian dollar weakens, it becomes increasingly imperative for individuals to take control of their investments. However, navigating volatile markets like cryptocurrency is challenging due to:
