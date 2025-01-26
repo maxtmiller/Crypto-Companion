@@ -1,70 +1,43 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CrptoCompanion
 
-## Available Scripts
+## Inspiration
+As the Canadian dollar weakens, it becomes increasingly imperative for individuals to take control of their investments. However, navigating volatile markets like cryptocurrency is challenging due to:
+- Lack of Reliable Knowledge
+- High Volatility Risks
+- Overwhelming Information Overload
+- Uncertainty in Investment Allocation
 
-In the project directory, you can run:
+## What it does
+CryptoCompanion bridges this gap by offering a beginner-friendly platform that empowers users with curated information, real-time portfolio visualization, and actionable investment advice to confidently navigate the crypto space. CryptoCompanion is a beginner-friendly platform that empowers users to confidently navigate the cryptocurrency market with:
+- Curated, reliable information tailored to crypto beginners.
+- Real-time insights into market trends and events.
 
-### `npm start`
+## How we built it
+- CryptoCompanion was created using a combination of web technologies and APIs:
+- Frontend: Built with React for an intuitive and responsive interface.
+- Backend: Node.js and Auth0 handle user authentication, data processing, and API integration including CoinGecko, cohere API.
+- Data: Integrated live market data and news using CoinGecko API.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Challenges we ran into
+- Integrating multiple APIs to deliver real-time data while maintaining performance.
+- Balancing simplicity for beginners with robust features for scalability.
+- Designing a user-friendly interface that doesn’t overwhelm first-time investors.
+- Ensuring accurate recommendations from the chatbot by refining data processing logic.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Accomplishments that we're proud of
+- Successfully created a platform that simplifies crypto investing for beginners.
+- Integrated real-time data visualization and market insights.
+- Developed a working chatbot that provides actionable investment advice.
+- Ensured a clean and intuitive interface through thoughtful design.
 
-### `npm test`
+## What we learned
+- The importance of user-centric design for building fintech tools.
+- How to optimize API integrations to minimize latency.
+- Strategies for balancing simplicity and functionality in a financial platform.
+- The value of teamwork in brainstorming, troubleshooting, and execution.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## What's next for CryptoCompanion
+- Advanced Features: Introduce advanced analytics, risk assessment tools, and staking opportunities.
+- Mobile App: Launch a mobile version for accessibility on the go.
+- Partnerships: Collaborate with educational institutions to offer crypto literacy programs.
