@@ -1,6 +1,11 @@
 .pie-container {
-  margin-top: 10vh;
+  margin-top: 5vh;
   margin-left: 10vw;
-  width: 20vw;
-  height: 20vh;
+  width: 400px;
+  height: 460px;
+}
+
+.pie-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }

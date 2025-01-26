@@ -23,6 +23,7 @@ const Chart = () => {
   return (
         
     <div className="pie-container" >
+      <h1>Portfolio Overview</h1>
       <PieChart width={400} height={400}>
         <Pie
           activeIndex={activeIndex}
