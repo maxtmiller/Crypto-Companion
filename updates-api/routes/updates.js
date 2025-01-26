@@ -4,14 +4,14 @@ const router = express.Router();
 
 router.get('/crypto-updates', async (req, res) => {
   try {
-    const { ids } = req.query;
+    const { names } = req.query;
 
-    if (!ids) {
-      return res.status(400).json({ error: 'Please provide an array of cryptocurrency IDs in the "ids" query parameter.' });
+    if (!names) {
+      return res.status(400).json({ error: 'Please provide an array of cryptocurrencies in the "names" query parameter.' });
     }
 
     // Convert the array into a comma-separated string
-    const cryptoIds = Array.isArray(ids) ? ids.join(',') : ids;
+    const cryptoIds = Array.isArray(names) ? names.join(',') : names;
 
     const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&ids=${cryptoIds}&price_change_percentage=24h`;
     const options = {
