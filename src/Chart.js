@@ -1,20 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 import './Chart.css'; 
 
 
 const Chart = () => {
-  const [activeIndex, setActiveIndex] = useState(-1);
-
-  const data = [
-      { name: 'Null', perecent: 0 },
-      { name: 'BTC', percent: 20 },
-      { name: 'ETH', percent: 30 },
-      { name: 'SOL', percent: 10 },
-      { name: 'SPNGBOB', percent: 40 }
-  ];
+  const [data, setData] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const userId = '12345'; // TODO: dynamically fetch the actual userId
 
   const COLORS = ['#858c96', '#92b1f4', '#3c4758', '#B8CDE8'];
+
+  const fetchPortfolio = async () => {
+    try {
+      const response = await fetch(`https://geesehacks.onrender.com/user/${userId}/portfolio`);
+      const result = await response.json();
+
+      // Transform the API response to the required format
+      const transformedData = result.portfolio.map(([name, percent]) => ({
+        name,
+        percent: parseFloat(percent),
+      }));
+
+      setData(transformedData);
+
+
+      
+
+
+    } catch (error) {
+      console.error('Error fetching portfolio:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPortfolio();
+  }, []);
 
   const onPieEnter = (_, index) => {
       setActiveIndex(index);
