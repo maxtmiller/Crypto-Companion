@@ -2,6 +2,7 @@
   "name": "geesehacks",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.21.11",
     "@google/generative-ai": "^0.21.0",
