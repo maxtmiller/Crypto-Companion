@@ -7,13 +7,16 @@ const axios = require('axios');
 const cors = require('cors');
 const { MongoClient, ServerApiVersion, GridFSBucket, ObjectId } = require("mongodb");
 const { auth } = require("express-openid-connect");
-const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { CohereClientV2 } = require('cohere-ai');
-// const cohere = require('cohere-ai');
+
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken'); // Install this package if not already installed
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(cookieParser());
+// app.use(express.json());
+// app.use(express.static(path.join(__dirname, "public")));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'public', 'views'));
@@ -62,13 +65,28 @@ app.use(auth(config));
 
 app.get('/', (req, res) => {
     if (req.oidc.isAuthenticated()) {
-        const userName = req.oidc.user.name;
+        const userName = req.oidc.user.sub;
 
-        res.render('index', { userName });
+        res.redirect('http://localhost:3001/?name=' + userName);
+
     } else {
         res.redirect('/login');
     }
 });
+
+// app.get('/', (req, res) => {
+//     if (req.oidc.isAuthenticated()) {
+//       const userName = req.oidc.user.sub;
+  
+//       // Set the cookie with the user information
+//       res.cookie('userName', userName, { httpOnly: true, secure: true, sameSite: 'Strict' });
+  
+//       // Send a redirect to the frontend without the user info in the URL
+//       res.redirect('http://localhost:3001');
+//     } else {
+//       res.redirect('/login');
+//     }
+//   });
 
 app.post('/cohere-chat', async (req, res) => {
     try {
