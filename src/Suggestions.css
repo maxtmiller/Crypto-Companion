@@ -1,0 +1,30 @@
+.suggestion-box {
+    position: fixed;
+    top: 585px;
+    left: 650px;
+    width: 1100px;
+    height: 425px;
+    background: white;
+    border: 2px solid #ddd; 
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.suggestion-box button {
+    width: 100%;
+    margin-top: 300px;
+    padding: 8px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.suggestion-box button:hover {
+    background: #0056b3;
+}

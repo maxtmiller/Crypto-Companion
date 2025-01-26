@@ -14,32 +14,36 @@ const Chart = () => {
       { name: 'SPNGBOB', percent: 40 }
   ];
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  const COLORS = ['#858c96', '#92b1f4', '#3c4758', '#B8CDE8'];
 
   const onPieEnter = (_, index) => {
       setActiveIndex(index);
   };
 
   return (
-        
-    <div className="pie-container" >
-      <h1>Portfolio Overview</h1>
-      <PieChart width={400} height={400}>
-        <Pie
-          activeIndex={activeIndex}
-          data={data}
-          dataKey="percent"
-          outerRadius={200}
-          fill="green"
-          onMouseEnter={onPieEnter}
-          style={{ cursor: 'pointer', outline: 'none' }}
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
-      </PieChart>
+
+
+
+    <div className="chart-box">
+
+      <div className="pie-container">
+        <PieChart width={350} height={350}>
+          <Pie
+            activeIndex={activeIndex}
+            data={data}
+            dataKey="percent"
+            outerRadius={175}
+            fill="green"
+            onMouseEnter={onPieEnter}
+            style={{ cursor: 'pointer', outline: 'none' }}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+      </div>
     </div>
   );
 
