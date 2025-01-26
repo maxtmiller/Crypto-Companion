@@ -110,4 +110,73 @@ router.put('/:userid/portfolio', async (req, res) => {
 });
 
 
+// Update user's history with portfolio value
+router.post('/:userid/history/update', async (req, res) => {
+    const { userid } = req.params;
+
+    try {
+        // Fetch the user
+        const user = await Model.findOne({ userid });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Extract cryptocurrency names from the user's portfolio
+        const cryptoIds = user.portfolio.map(([crypto]) => crypto).join(',');
+
+        let totalValue = 0;
+
+        if (cryptoIds) {
+            // Fetch current prices from CoinGecko
+            const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${cryptoIds}`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    'x-cg-demo-api-key': process.env.GECKO_KEY,
+                },
+            };
+            
+            const response = await fetch(url, options);
+
+            if (response.ok) {
+                const priceData = await response.json();
+
+                // map prices
+                const priceMap = {};
+                priceData.forEach((coin) => {
+                    priceMap[coin.id] = coin.current_price;
+                });
+
+                // calculate total portfolio value
+                user.portfolio.forEach(([crypto, quantity]) => {
+                    const price = priceMap[crypto];
+                    if (price !== undefined) {
+                        totalValue += quantity * price;
+                    }
+                });
+            } else {
+                console.error("Failed to fetch prices from CoinGecko:", response.statusText);
+            }
+        }
+
+        // Append current date and total value to history
+        const currentDate = new Date().toISOString();
+        user.history.push([currentDate, totalValue]);
+
+        // Save updated user to the database
+        await user.save();
+
+        res.status(200).json({
+            message: "History updated successfully",
+            portfolioValue: totalValue,
+            history: user.history
+        });
+    } catch (error) {
+        console.error("Error updating history:", error.message);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 module.exports = router;

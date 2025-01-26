@@ -11,7 +11,7 @@ const User = new mongoose.Schema(
             type: String
         },
         history: {
-            type: [[Number, Number]],  // [week#, total value (in $)]
+            type: [[String, Number]],  // [date (ISO format), total value (in $)]
             default: []
         },
         portfolio: {
