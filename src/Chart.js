@@ -23,10 +23,6 @@ const Chart = () => {
 
       setData(transformedData);
 
-
-      
-
-
     } catch (error) {
       console.error('Error fetching portfolio:', error);
     }
@@ -42,8 +38,6 @@ const Chart = () => {
 
   return (
 
-
-
     <div className="chart-box">
 
       <div className="pie-container">
@@ -52,6 +46,10 @@ const Chart = () => {
             activeIndex={activeIndex}
             data={data}
             dataKey="percent"
+            innerRadius={90}  // Adjust inner radius to create spacing
+            paddingAngle={5}  // Add spacing between slices
+            stroke="white"    // Add border around slices
+            strokeWidth={2}   // Adjust border thickness
             outerRadius={175}
             fill="green"
             onMouseEnter={onPieEnter}

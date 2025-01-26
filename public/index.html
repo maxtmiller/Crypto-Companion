@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="./logo.jpeg" />
+    <link rel="icon" href="./logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <link rel="stylesheet" href="./styling/styles.css">
@@ -25,13 +25,18 @@
   </head>
   <body style="width: 100%; overflow: hidden;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <header class="dashboard-header" style="background-color: #dedcd7; padding: 10px 20px;">
+    <header class="dashboard-header" style="background-color: white; padding: 10px 20px;">
       <div style="display: flex; align-items: center;">
-          <img src="../logo.jpeg" width="320px;" height="65px" style="border-radius: 10px;">
+          <img src="./logo.png" width="380px;" height="65px" style="border-radius: 10px;">
+          <h1 style="margin-left: 300px; margin-right: 5px; color: black;">BTC:</h1>
+          <h1 id="btc-price" style="color: #00bf63;">BTC:</h1>
+          <h1 style="margin-left: 200px; margin-right: 5px; color: black;">ETH:</h1>
+          <h1 id="eth-price" style="color: #00bf63;"></h1>
+          <h1 style="margin-left: 200px; margin-right: 5px; color: black;">SOL:</h1>
+          <h1 id="sol-price" style="color: red"></h1>
       </div>
       <nav>
           <ul>
-              <!-- <li><a href="/logout">Logout</a></li> -->
               <li><button id="logoutButton">Logout</button></li>
           </ul>
       </nav>
@@ -53,5 +58,6 @@
         <script src="../chatbot.js" ></script>
     </main>
     <script src="../auth.js"></script>
+    <script src="../coins.js"></script>
   </body>
 </html>
