@@ -48,9 +48,6 @@ async function connectToDatabase() {
     }
 }
 
-
-app.use(express.static(path.join(__dirname, 'public')));
-
 const config = {
     authRequired: false,
     auth0Logout: true,
@@ -67,7 +64,7 @@ app.get('/', (req, res) => {
     if (req.oidc.isAuthenticated()) {
         const userName = req.oidc.user.name;
 
-        res.render('home', { userName });
+        res.render('index', { userName });
     } else {
         res.redirect('/login');
     }
