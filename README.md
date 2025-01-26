@@ -1,5 +1,5 @@
 
-# CryptoCompanion
+# [`CryptoCompanion`](https://devpost.com/software/cryptocompanion)
 
 ## Inspiration
 As the Canadian dollar weakens, it becomes increasingly imperative for individuals to take control of their investments. However, navigating volatile markets like cryptocurrency is challenging due to:
@@ -35,9 +35,11 @@ CryptoCompanion bridges this gap by offering a beginner-friendly platform that e
 - The importance of user-centric design for building fintech tools.
 - How to optimize API integrations to minimize latency.
 - Strategies for balancing simplicity and functionality in a financial platform.
-- The value of teamwork in brainstorming, troubleshooting, and execution.
+- The value of teamwork in brainstorming, troubleshooting, and execution.'
 
 ## What's next for CryptoCompanion
 - Advanced Features: Introduce advanced analytics, risk assessment tools, and staking opportunities.
 - Mobile App: Launch a mobile version for accessibility on the go.
 - Partnerships: Collaborate with educational institutions to offer crypto literacy programs.
+
+## [`API Deployment`](https://geesehacks.onrender.com)
