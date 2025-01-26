@@ -13,7 +13,7 @@ router.get('/crypto-updates', async (req, res) => {
     // Convert the array into a comma-separated string
     const cryptoIds = Array.isArray(ids) ? ids.join(',') : ids;
 
-    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${cryptoIds}&price_change_percentage=24h`;
+    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&ids=${cryptoIds}&price_change_percentage=24h`;
     const options = {
       method: 'GET',
       headers: {
