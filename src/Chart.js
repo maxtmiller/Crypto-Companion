@@ -1,44 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 import './Chart.css'; 
 
 
 const Chart = () => {
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [data, setData] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const userId = '12345'; // TODO: dynamically fetch the actual userId
 
-  const data = [
-      { name: 'Null', perecent: 0 },
-      { name: 'BTC', percent: 20 },
-      { name: 'ETH', percent: 30 },
-      { name: 'SOL', percent: 10 },
-      { name: 'SPNGBOB', percent: 40 }
-  ];
+  const COLORS = ['#858c96', '#92b1f4', '#3c4758', '#B8CDE8'];
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  const fetchPortfolio = async () => {
+    try {
+      const response = await fetch(`https://geesehacks.onrender.com/user/${userId}/portfolio`);
+      const result = await response.json();
+
+      // Transform the API response to the required format
+      const transformedData = result.portfolio.map(([name, percent]) => ({
+        name,
+        percent: parseFloat(percent),
+      }));
+
+      setData(transformedData);
+
+    } catch (error) {
+      console.error('Error fetching portfolio:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPortfolio();
+  }, []);
 
   const onPieEnter = (_, index) => {
       setActiveIndex(index);
   };
 
   return (
-        
-    <div className="pie-container" >
-      <PieChart width={400} height={400}>
-        <Pie
-          activeIndex={activeIndex}
-          data={data}
-          dataKey="percent"
-          outerRadius={200}
-          fill="green"
-          onMouseEnter={onPieEnter}
-          style={{ cursor: 'pointer', outline: 'none' }}
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-        <Tooltip />
-      </PieChart>
+
+    <div className="chart-box">
+
+      <div className="pie-container">
+        <PieChart width={350} height={350}>
+          <Pie
+            activeIndex={activeIndex}
+            data={data}
+            dataKey="percent"
+            innerRadius={90}  // Adjust inner radius to create spacing
+            paddingAngle={5}  // Add spacing between slices
+            stroke="white"    // Add border around slices
+            strokeWidth={2}   // Adjust border thickness
+            outerRadius={175}
+            fill="green"
+            onMouseEnter={onPieEnter}
+            style={{ cursor: 'pointer', outline: 'none' }}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+      </div>
     </div>
   );
 
