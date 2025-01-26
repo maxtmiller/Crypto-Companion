@@ -40,7 +40,7 @@ function sendMessage() {
     console.log(userMessage);
 
     // Send the user message to the server
-    fetch('/cohere-chat', {
+    fetch('http://localhost:3000/cohere-chat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

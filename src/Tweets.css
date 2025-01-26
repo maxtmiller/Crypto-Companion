@@ -1,0 +1,23 @@
+.tweet-box {
+    width: 500px;      
+    height: 83vh;   
+    margin-left: 10px;
+    overflow-y: scroll;    
+    border: 2px solid #ddd; 
+    border-radius: 8px;   
+    padding: 10px;         
+    background-color: white;
+    z-index: 1000;         
+}
+  
+.tweet-box iframe {
+    width: 100% !important;  
+    height: auto !important; 
+    margin-bottom: 20px;
+}
+
+.tweet-container h1 {
+    text-align: center !important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

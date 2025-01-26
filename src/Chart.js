@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { PieChart, Pie, Tooltip, Cell } from 'recharts';
-// import { Tweet } from 'react-tweet';
-import './App.css'; 
+import './Chart.css'; 
 
 
-const PChart = () => {
+const Chart = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const data = [
@@ -21,37 +20,15 @@ const PChart = () => {
       setActiveIndex(index);
   };
 
-/*
-  return (
-    <div className="App">
-      <h1>Twitter Feed</h1>
-        <div className="tweet-box">
-          <Tweet id="1883100021639274974" />
-          <Tweet id="1882524283928530969" />
-          <Tweet id="1883227588140704151" />
-          
-        </div>
-    </div>
-  );
-*/
-
   return (
         
-    
-    <div style={{
-
-      position: 'absolute',  // Enables precise positioning
-      top: '40%',  // Move it up/down
-      left: '70%',  // Center it horizontally
-      transform: 'translate(-50%, -50%)', // Ensures true centering
- 
-    }}>
-      <PieChart width={700} height={700}>
+    <div className="pie-container" >
+      <PieChart width={400} height={400}>
         <Pie
           activeIndex={activeIndex}
           data={data}
           dataKey="percent"
-          outerRadius={250}
+          outerRadius={200}
           fill="green"
           onMouseEnter={onPieEnter}
           style={{ cursor: 'pointer', outline: 'none' }}
@@ -67,4 +44,4 @@ const PChart = () => {
 
 }
 
-export default PChart;
+export default Chart;
