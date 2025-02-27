@@ -1,5 +1,5 @@
 
-# [`CryptoCompanion`](https://devpost.com/software/cryptocompanion)
+# [`CryptoCompanion`](https://devpost.com/software/cryptocompanion) 
 
 ## 💡 &nbsp;&nbsp;&nbsp;**Inspiration**&nbsp;&nbsp;&nbsp; 💡
 As the Canadian dollar weakens, it becomes increasingly imperative for individuals to take control of their investments. However, navigating volatile markets like cryptocurrency is challenging due to:
