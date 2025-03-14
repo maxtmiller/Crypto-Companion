@@ -29,7 +29,7 @@ function Graph() {
             return cookie.substring(name.length + 1); // Extract the value after the '=' sign
         }
     }
-    return null; // Return null if the cookie is not found
+    return null; // Return null if the cookie is not found 
   };
 
   console.log('Graph.js Cookie userId:', getCookie('userId'));
