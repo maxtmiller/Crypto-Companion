@@ -34,7 +34,7 @@ function sendMessage() {
 
     console.log(userMessage);
 
-    fetch('http://localhost:3000/cohere-chat', {
+    fetch('https://geesehacks.onrender.com/cohere-chat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

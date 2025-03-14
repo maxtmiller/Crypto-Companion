@@ -23,7 +23,7 @@ function extractUserName(name) {
 function sendMessageSuggestion(portfolioData) {
     console.log('Sending portfolio data:', JSON.stringify(portfolioData));
 
-    fetch('http://localhost:3000/cohere-suggestion', {
+    fetch('https://geesehacks.onrender.com/cohere-suggestion', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

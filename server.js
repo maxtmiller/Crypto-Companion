@@ -12,7 +12,12 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'public', 'views'));
 
-app.use(cors());
+
+const corsOptions = {
+    origin: 'https://crypto-companion-three.vercel.app',
+    credentials: true,
+};
+app.use(cors(corsOptions));
 
 
 const apiKey = process.env.COHERE_API_KEY;
@@ -39,7 +44,7 @@ app.get('/', (req, res) => {
         const userID = userSub.split('|')[1];
         const userName = req.oidc.user.nickname;
 
-        res.redirect('http://localhost:3001/?name=' + userName + '|' + userID);
+        res.redirect('https://crypto-companion-three.vercel.app/?name=' + userName + '|' + userID);
 
     } else {
         res.redirect('/login');
