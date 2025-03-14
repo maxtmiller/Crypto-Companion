@@ -22,11 +22,17 @@ function Graph() {
 
   // Function to get a cookie by name
   const getCookie = (name) => {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return null;
+    const cookieArr = document.cookie.split(';'); // Split the cookies string into individual cookies
+    for (let i = 0; i < cookieArr.length; i++) {
+        let cookie = cookieArr[i].trim(); // Remove any leading or trailing spaces
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1); // Extract the value after the '=' sign
+        }
+    }
+    return null; // Return null if the cookie is not found
   };
+
+  console.log('Graph.js Cookie userId:', getCookie('userId'));
 
   const userId = getCookie('userId') || '12345'; // TODO: dynamically fetch the actual userId
   
