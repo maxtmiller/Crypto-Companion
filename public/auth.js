@@ -1,6 +1,6 @@
 document.getElementById('logoutButton').addEventListener('click', () => {
     console.log('Logging out...');
-    window.location.href = 'http://localhost:3000/logout';
+    window.location.href = 'dev-o85dkax757ba2dat.ca.auth0.com/logout';
 });
 
 function getQueryParam(param) {
@@ -90,8 +90,12 @@ window.onload = () => {
     console.log('User ID:', userId);
     console.log('User Nickname:', userName);
 
-    setCookie('userId', userId);
-    setCookie('userName', userName);
+    if (getCookie('userId') === null || getCookie('userName') === null) {
+        window.location.href = 'dev-o85dkax757ba2dat.ca.auth0.com/login';
+    } else {
+        setCookie('userId', userId);
+        setCookie('userName', userName);
+    }
 
     console.log('Cookie User ID:', getCookie('userId'));
     console.log('Cookie User Name:', getCookie('userName'));

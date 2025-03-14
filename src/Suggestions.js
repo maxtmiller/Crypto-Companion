@@ -59,6 +59,19 @@ function Suggestions() {
     SOL: true,
   });
 
+  const getCookie = (name) => {
+    const cookieArr = document.cookie.split(';'); // Split the cookies string into individual cookies
+    for (let i = 0; i < cookieArr.length; i++) {
+        let cookie = cookieArr[i].trim(); // Remove any leading or trailing spaces
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1); // Extract the value after the '=' sign
+        }
+    }
+    return null; // Return null if the cookie is not found 
+  };
+
+  const userId = getCookie('userId') || '12345'; // TODO: dynamically fetch the actual userId
+
   const handleDecline = (coin) => {
     alert(`You declined the suggestion for ${coin}`);
     setVisibleSuggestions((prevState) => ({
@@ -73,8 +86,6 @@ function Suggestions() {
       ...prevState,
       [coin]: false, // Optionally hide the suggestion after accepting as well
     }));
-
-    const userId = "12345"; // TODO: dynamically fetch the actual userId
 
      // Check if ETH was accepted and send the request
     if (coin === "ETH") {
