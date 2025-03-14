@@ -70,7 +70,7 @@ function Suggestions() {
     return null; // Return null if the cookie is not found 
   };
 
-  const userId = getCookie('userId') || '12345'; // TODO: dynamically fetch the actual userId
+  const userId = (getCookie('userId') === 'null' || !getCookie('userId')) ? '12345' : getCookie('userId'); // TODO: dynamically fetch the actual userId
 
   const handleDecline = (coin) => {
     alert(`You declined the suggestion for ${coin}`);

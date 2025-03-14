@@ -32,7 +32,7 @@ function Graph() {
     return null; // Return null if the cookie is not found 
   };
 
-  const userId = getCookie('userId') || '12345'; // TODO: dynamically fetch the actual userId
+  const userId = (getCookie('userId') === 'null' || !getCookie('userId')) ? '12345' : getCookie('userId'); // TODO: dynamically fetch the actual userId
   
   const fetchHistory = async () => {
     try {

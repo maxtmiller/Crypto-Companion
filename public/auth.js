@@ -90,11 +90,7 @@ window.onload = () => {
     console.log('User ID:', userId);
     console.log('User Nickname:', userName);
 
-    console.log(getCookie('userId') === null);
-    console.log(getCookie('userId') === '');
-    console.log(getCookie('userId') === 'null');
-
-    if (getCookie('userId') === null || getCookie('userId') === '' || getCookie('userName') === null || getCookie('userId') === '') {
+    if (getCookie('userId') === 'null' || getCookie('userId') === 'null') {
         window.location.href = 'dev-o85dkax757ba2dat.ca.auth0.com/login';
     } else {
         setCookie('userId', userId);
