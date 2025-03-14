@@ -6,7 +6,19 @@ import './Chart.css';
 const Chart = () => {
   const [data, setData] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
-  const userId = '12345';
+
+  const getCookie = (name) => {
+    const cookieArr = document.cookie.split(';'); // Split the cookies string into individual cookies
+    for (let i = 0; i < cookieArr.length; i++) {
+        let cookie = cookieArr[i].trim(); // Remove any leading or trailing spaces
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1); // Extract the value after the '=' sign
+        }
+    }
+    return null; // Return null if the cookie is not found 
+  };
+
+  const userId = getCookie('userId') || '12345'; // TODO: dynamically fetch the actual userId
 
   const COLORS = ['#858c96', '#92b1f4', '#3c4758', '#B8CDE8'];
 

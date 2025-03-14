@@ -32,11 +32,7 @@ function Graph() {
     return null; // Return null if the cookie is not found 
   };
 
-  console.log('Graph.js Cookie userId:', getCookie('userId'));
-
   const userId = getCookie('userId') || '12345'; // TODO: dynamically fetch the actual userId
-
-  console.log('Chosen Graph.js userId:', userId);
   
   const fetchHistory = async () => {
     try {
