@@ -90,6 +90,8 @@ window.onload = () => {
     console.log('User ID:', userId);
     console.log('User Nickname:', userName);
 
+    console.log(userName === null && getCookie('userId') === null)
+
     if (getCookie('userId') === null || getCookie('userName') === null) {
         window.location.href = 'dev-o85dkax757ba2dat.ca.auth0.com/login';
     } else {
