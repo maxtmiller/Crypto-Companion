@@ -67,6 +67,17 @@ const setCookie = (name, value, days = 7) => {
     document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires.toUTCString()}; path=/`;
 };
 
+const getCookie = (name) => {
+    const cookieArr = document.cookie.split(';'); // Split the cookies string into individual cookies
+    for (let i = 0; i < cookieArr.length; i++) {
+        let cookie = cookieArr[i].trim(); // Remove any leading or trailing spaces
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1); // Extract the value after the '=' sign
+        }
+    }
+    return null; // Return null if the cookie is not found
+};
+
 
 window.onload = () => {
     // const name = getQueryParam('name');
@@ -76,8 +87,14 @@ window.onload = () => {
     const userName = getQueryParam('name');
     const userId = getQueryParam('userId');
 
+    console.log('User ID:', userId);
+    console.log('User Nickname:', userName);
+
     setCookie('userId', userId);
     setCookie('userName', userName);
+
+    console.log('Cookie User ID:', getCookie('userId'));
+    console.log('Cookie User Name:', getCookie('userName'));
 
     if (userId) {
         console.log('User ID:', userId);
