@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
         const userID = userSub.split('|')[1];
         const userName = req.oidc.user.nickname;
 
-        res.redirect('https://crypto-companion-three.vercel.app/?name=' + userName + '|' + userID);
+        res.redirect('https://crypto-companion-three.vercel.app/?name=' + userName + '&userId=' + userID);
 
     } else {
         res.redirect('/login');

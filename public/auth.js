@@ -20,6 +20,7 @@ function extractUserName(name) {
     return parts.length === 2 ? parts[0] : null;
 }
 
+
 function sendMessageSuggestion(portfolioData) {
     console.log('Sending portfolio data:', JSON.stringify(portfolioData));
 
@@ -59,10 +60,24 @@ function sendMessageSuggestion(portfolioData) {
     });
 }
 
+
+const setCookie = (name, value, days = 7) => {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000)); // Expiry time in days
+    document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires.toUTCString()}; path=/`;
+};
+
+
 window.onload = () => {
-    const name = getQueryParam('name');
-    const userId = extractUserId(name);
-    const userName = extractUserName(name);
+    // const name = getQueryParam('name');
+    // const userId = extractUserId(name);
+    // const userName = extractUserName(name);
+
+    const userName = getQueryParam('name');
+    const userId = getQueryParam('userId');
+
+    setCookie('userId', userId);
+    setCookie('userName', userName);
 
     if (userId) {
         console.log('User ID:', userId);
