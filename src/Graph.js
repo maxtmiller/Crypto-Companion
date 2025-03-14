@@ -35,6 +35,8 @@ function Graph() {
   console.log('Graph.js Cookie userId:', getCookie('userId'));
 
   const userId = getCookie('userId') || '12345'; // TODO: dynamically fetch the actual userId
+
+  console.log('Chosen Graph.js userId:', userId);
   
   const fetchHistory = async () => {
     try {
