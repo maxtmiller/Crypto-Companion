@@ -91,7 +91,8 @@ window.onload = () => {
     console.log('User Nickname:', userName);
 
     if (getCookie('userId') === 'null' || getCookie('userId') === 'null') {
-        window.location.href = '/login';
+        // window.location.href = '/login';
+        console.log('No user ID found in cookie.');
     } else {
         setCookie('userId', userId);
         setCookie('userName', userName);
