@@ -32,39 +32,6 @@ const userRoutes = require('./routes/users');
 app.use('/user', userRoutes);
 
 
-app.post('/cohere-chat-ss', async (req, res) => {
-    try {
-
-        // Define the system message context
-        const systemMessage = `## Task and Context
-        You are a medical professional providing advice to someone who might have skin cancer.
-
-        ## Style Guide
-        Respond in short, clear, and concise sentences. Provide only the necessary information and avoid over-explaining.`;
-
-        // Construct the list of messages
-        const messages = [
-            { role: "system", content: systemMessage },
-            { role: "user", content: userMessage },
-        ];
-
-        // Generate the response from Cohere's API
-        const response = await cohere.chat({
-            model: "command-r-plus-08-2024",
-            messages: messages,
-        });
-
-        // Extract the assistant's response
-        const assistantMessage = response.body.messages[0].text;
-
-        return assistantMessage;
-    } catch (error) {
-        console.error(`Error occurred: ${error.message}`);
-        return "Sorry, there was an issue processing your message.";
-    }
-}
-
-
 app.post('/cohere-chat', async (req, res) => {
     try {
 
